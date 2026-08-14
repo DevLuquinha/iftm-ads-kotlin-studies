@@ -1,0 +1,22 @@
+# Build
+build/
+.gradle/
+local.properties
+*.apk
+*.aab
+
+# Android Studio / IntelliJ
+.idea/
+*.iml
+*.iws
+*.ipr
+captures/
+
+# Logs e Temporários
+*.log
+tmp/
+
+# Arquivos do Sistema
+.DS_Store
+Thumbs.db
+desktop.ini
