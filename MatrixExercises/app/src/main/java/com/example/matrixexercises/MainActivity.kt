@@ -10,7 +10,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 //        exercise1();
-
+        exercise2();
     }
 
     fun exercise1(){
@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         var rowSize = 5;
 
         var matrix = createMatrix(columnSize, rowSize);
-
+        populateMatrix(matrix, columnSize, rowSize);
         showMatrix(matrix, columnSize, rowSize);
 
         var rowThreeSum = 0;
@@ -63,11 +63,43 @@ class MainActivity : AppCompatActivity() {
         Log.i("DEBUG-TEST", "-------------------------------------------");
     }
 
+    fun exercise2(){
+        val columnSize = 4;
+        val rowSize = 6;
+
+        var matrixA = createMatrix(columnSize, rowSize);
+        populateMatrix(matrixA, columnSize, rowSize);
+
+        var matrixB = createMatrix(columnSize, rowSize);
+        populateMatrix(matrixB, columnSize, rowSize);
+
+        showMatrix(matrixA, columnSize, rowSize,  "Matrix A");
+        showMatrix(matrixB, columnSize, rowSize,  "Matrix B");
+
+        var matrixS = createMatrix(columnSize, rowSize);
+        var matrixD = createMatrix(columnSize, rowSize);
+
+        for (i in 0 until columnSize){
+            for (j in 0 until rowSize){
+                matrixS[i][j] = matrixA[i][j] + matrixB[i][j];
+                matrixD[i][j] = matrixA[i][j] - matrixB[i][j];
+            }
+        }
+
+        showMatrix(matrixS, columnSize, rowSize,  "Matrix S");
+        showMatrix(matrixD, columnSize, rowSize,  "Matrix S");
+    }
+
     fun createMatrix(columnLength : Int, rowsLength: Int) : Array<IntArray> {
         var matrix = Array(columnLength, { IntArray(rowsLength) });
 
+        return matrix;
+    }
+
+    fun populateMatrix(matrix : Array<IntArray>, columnLength : Int, rowsLength: Int) : Array<IntArray> {
         var matrixValue = 1;
-        for (i in 0 until columnLength){
+
+        for (i in 0 until matrix.size){
             for (j in 0 until rowsLength){
                 matrix[i][j] = matrixValue;
                 matrixValue++;
@@ -77,8 +109,8 @@ class MainActivity : AppCompatActivity() {
         return matrix;
     }
 
-    fun showMatrix(matrix : Array<IntArray>, columnSize : Int, rowSize : Int){
-        Log.i("DEBUG-TEST", "Show Default Matrix");
+    fun showMatrix(matrix : Array<IntArray>, columnSize : Int, rowSize : Int, prompt : String = "Default Matrix"){
+        Log.i("DEBUG-TEST", prompt);
         Log.i("DEBUG-TEST", "-------------------------------------------");
         var matrixMessage = "";
         for (i in 0 until columnSize){
