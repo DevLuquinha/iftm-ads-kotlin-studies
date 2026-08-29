@@ -2,27 +2,37 @@ package com.example.matrixexercises
 
 import android.os.Bundle
 import android.util.Log
+import android.util.Log.i
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 
 class MainActivity : AppCompatActivity() {
+    lateinit var titleTypeNumberText : TextView;
     lateinit var numberInput : TextView;
     lateinit var btnVerify : Button;
     lateinit var matrixText : TextView;
     lateinit var resultText : TextView;
+    lateinit var mainMessageText : TextView;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-//        exercise1();
-//        exercise2();
-//        exercise3();
-//        exercise4();
-//        exercise5();
-//        exercise6();
-        exercise7();
+        val exerciseNumber = 1; // Set the exercise number here my friend Big Jeff
+
+        bindingUIComponents(exerciseNumber);
+
+        when (exerciseNumber){
+            1 -> exercise1();
+            2 -> exercise2();
+            3 -> exercise3();
+            4 -> exercise4();
+            5 -> exercise5();
+            6 -> exercise6();
+            7 -> exercise7();
+        }
     }
 
     fun exercise1(){
@@ -76,8 +86,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun exercise2(){
-        val columnSize = 4;
         val rowSize = 6;
+        val columnSize = 4;
 
         var matrixA = createIntMatrix( rowSize, columnSize);
         populateIntMatrix(matrixA);
@@ -91,8 +101,8 @@ class MainActivity : AppCompatActivity() {
         var matrixS = createIntMatrix(rowSize, columnSize);
         var matrixD = createIntMatrix(rowSize, columnSize);
 
-        for (i in 0 until columnSize){
-            for (j in 0 until rowSize){
+        for (i in 0 until rowSize){
+            for (j in 0 until columnSize){
                 matrixS[i][j] = matrixA[i][j] + matrixB[i][j];
                 matrixD[i][j] = matrixA[i][j] - matrixB[i][j];
             }
@@ -103,11 +113,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun exercise3(){
-        numberInput = findViewById(R.id.et_number);
-        btnVerify = findViewById(R.id.btn_verify);
-        matrixText = findViewById(R.id.tv_matrix);
-        resultText = findViewById(R.id.tv_result);
-
         var columnSize = 5;
         var rowSize = 5;
 
@@ -143,7 +148,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun exercise4(){
-        var matrixA = createDoubleMatrix(5, 3);
+        var matrixA = createDoubleMatrix(12, 13);
         populateDoubleMatrix(matrixA);
 
         showDoubleMatrix(matrixA, "Matrix A before changes");
@@ -300,7 +305,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun createIntMatrix(rowsLength: Int, columnLength : Int,) : Array<IntArray> {
-        var matrix = Array(rowsLength, { IntArray(columnLength) });
+        var matrix = Array(rowsLength, { IntArray(columnLength, { i -> 0 }) });
 
         return matrix;
     }
@@ -395,5 +400,21 @@ class MainActivity : AppCompatActivity() {
         }
         Log.i("DEBUG-TEST", arrayMessage);
         Log.i("DEBUG-TEST", "-------------------------------------------");
+    }
+
+    fun bindingUIComponents(exerciseNumber : Int){
+        titleTypeNumberText = findViewById(R.id.tv_typeNumber);
+        numberInput = findViewById(R.id.et_number);
+        btnVerify = findViewById(R.id.btn_verify);
+        matrixText = findViewById(R.id.tv_matrix);
+        resultText = findViewById(R.id.tv_result);
+        mainMessageText = findViewById(R.id.tv_mainMessage);
+
+        titleTypeNumberText.isVisible = exerciseNumber == 3;
+        numberInput.isVisible = exerciseNumber == 3;
+        btnVerify.isVisible = exerciseNumber == 3;
+        matrixText.isVisible = exerciseNumber == 3;
+        resultText.isVisible = exerciseNumber == 3;
+        mainMessageText.isVisible = exerciseNumber != 3;
     }
 }
