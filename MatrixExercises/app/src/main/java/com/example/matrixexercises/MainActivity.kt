@@ -20,7 +20,8 @@ class MainActivity : AppCompatActivity() {
 //        exercise2();
 //        exercise3();
 //        exercise4();
-        exercise5();
+//        exercise5();
+        exercise6();
     }
 
     fun exercise1(){
@@ -176,6 +177,70 @@ class MainActivity : AppCompatActivity() {
 
         showIntArray(arrayColumnsSum, "Columns");
         showIntArray(arrayRowsSum, "Rows");
+    }
+
+    fun exercise6(){
+        var matrixA = createIntMatrix(2, 3);
+        populateIntMatrix(matrixA);
+        var matrixB = createIntMatrix(3, 4);
+        populateIntMatrix(matrixB);
+
+        var matrixS = createIntMatrix(2, 4);
+
+        for (i in 0 until matrixS.size){
+            for (j in 0 until matrixS[i].size){
+                matrixS[i][j] = multiplyMatrix(
+                    columnIndexConstant = j,
+                    rowIndexConstant = i,
+                    matrixA = matrixA,
+                    matrixB = matrixB
+                );
+            }
+        }
+
+        showIntMatrix(matrixA, "Matrix A");
+        showIntMatrix(matrixB, "Matrix B");
+
+        showIntMatrix(matrixS, "Matrix S");
+    }
+
+    fun multiplyMatrix(
+        columnIndexConstant : Int, rowIndexConstant : Int,
+        matrixA : Array<IntArray>, matrixB : Array<IntArray>) : Int {
+
+        // 1. Extract arrays
+        var arrayA = extractRowArray(matrixA, rowIndex = rowIndexConstant);
+        var arrayB = extractColumnArray(matrixB, columnIndex = columnIndexConstant);
+
+        // 2. Multiply and sum each value in array
+        var finalValue = 0;
+
+        for (i in 0 until arrayA.size){
+            var product = arrayA[i] * arrayB[i];
+            finalValue += product;
+        }
+
+        return finalValue;
+    }
+
+    fun extractRowArray(matrix : Array<IntArray>, rowIndex : Int) : IntArray{
+        var array = IntArray(matrix[rowIndex].size);
+
+        for (i in 0 until array.size){
+            array[i] = matrix[rowIndex][i];
+        }
+
+        return array;
+    }
+
+    fun extractColumnArray(matrix : Array<IntArray>, columnIndex: Int) : IntArray{
+        var array = IntArray(matrix.size);
+
+        for (i in 0 until array.size){
+            array[i] = matrix[i][columnIndex];
+        }
+
+        return array;
     }
 
     fun sumRows(matrix : Array<IntArray>, rowIndex : Int) : Int {
