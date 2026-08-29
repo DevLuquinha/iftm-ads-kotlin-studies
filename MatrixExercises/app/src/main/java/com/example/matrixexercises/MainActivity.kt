@@ -19,7 +19,8 @@ class MainActivity : AppCompatActivity() {
 //        exercise1();
 //        exercise2();
 //        exercise3();
-        exercise4();
+//        exercise4();
+        exercise5();
     }
 
     fun exercise1(){
@@ -156,6 +157,47 @@ class MainActivity : AppCompatActivity() {
         showDoubleMatrix(matrixA, "Matrix A after changes");
     }
 
+    fun exercise5(){
+        var matrix = createIntMatrix(5, 5);
+        populateIntMatrix(matrix, false);
+
+        showIntMatrix(matrix);
+
+        var arrayRowsSum = IntArray(5);
+        var arrayColumnsSum = IntArray(5);
+
+        for (i in 0 until arrayRowsSum.size){
+            arrayRowsSum[i] = sumRows(matrix, i);
+        }
+
+        for (i in 0 until arrayColumnsSum.size) {
+            arrayColumnsSum[i] = sumColumns(matrix, i);
+        }
+
+        showIntArray(arrayColumnsSum, "Columns");
+        showIntArray(arrayRowsSum, "Rows");
+    }
+
+    fun sumRows(matrix : Array<IntArray>, rowIndex : Int) : Int {
+        var sum = 0;
+
+        for (value in matrix[rowIndex]){
+            sum += value;
+        }
+
+        return sum;
+    }
+
+    fun sumColumns(matrix : Array<IntArray>, columnIndex : Int) : Int{
+        var sum = 0;
+
+        for (i in 0 until matrix.size){
+            sum += matrix[i][columnIndex];
+        }
+
+        return sum;
+    }
+
     fun createIntMatrix(rowsLength: Int, columnLength : Int,) : Array<IntArray> {
         var matrix = Array(rowsLength, { IntArray(columnLength) });
 
@@ -168,13 +210,13 @@ class MainActivity : AppCompatActivity() {
         return matrix;
     }
 
-    fun populateIntMatrix(matrix : Array<IntArray>) {
-        var matrixValue = 1;
+    fun populateIntMatrix(matrix : Array<IntArray>, isRandom: Boolean = false) {
+        var sequencialValue = 1;
 
         for (i in 0 until matrix.size){
             for (j in 0 until matrix[i].size){
-                matrix[i][j] = matrixValue;
-                matrixValue++;
+                matrix[i][j] = if(isRandom) (1 .. 99).random() else sequencialValue;
+                sequencialValue++;
             }
         }
     }
@@ -230,5 +272,16 @@ class MainActivity : AppCompatActivity() {
         }
 
         return false; // 404 not found
+    }
+
+    fun showIntArray(array : IntArray, prompt : String = "Default Array"){
+        Log.i("DEBUG-TEST", prompt);
+        Log.i("DEBUG-TEST", "-------------------------------------------");
+        var arrayMessage = "";
+        for (i in 0 until array.size){
+            arrayMessage += if (array[i] < 10) "[0${array[i]}] " else "[${array[i]}] ";
+        }
+        Log.i("DEBUG-TEST", arrayMessage);
+        Log.i("DEBUG-TEST", "-------------------------------------------");
     }
 }
