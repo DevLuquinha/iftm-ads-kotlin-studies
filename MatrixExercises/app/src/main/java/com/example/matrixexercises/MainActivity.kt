@@ -18,16 +18,17 @@ class MainActivity : AppCompatActivity() {
 
 //        exercise1();
 //        exercise2();
-        exercise3();
+//        exercise3();
+        exercise4();
     }
 
     fun exercise1(){
         var columnSize = 5;
         var rowSize = 5;
 
-        var matrix = createMatrix(columnSize, rowSize);
-        populateMatrix(matrix, columnSize, rowSize);
-        showMatrix(matrix, columnSize, rowSize);
+        var matrix = createIntMatrix(columnSize, rowSize);
+        populateIntMatrix(matrix);
+        showIntMatrix(matrix);
 
         var rowThreeSum = 0;
         var columnTwoSum = 0;
@@ -75,17 +76,17 @@ class MainActivity : AppCompatActivity() {
         val columnSize = 4;
         val rowSize = 6;
 
-        var matrixA = createMatrix(columnSize, rowSize);
-        populateMatrix(matrixA, columnSize, rowSize);
+        var matrixA = createIntMatrix( rowSize, columnSize);
+        populateIntMatrix(matrixA);
 
-        var matrixB = createMatrix(columnSize, rowSize);
-        populateMatrix(matrixB, columnSize, rowSize);
+        var matrixB = createIntMatrix(rowSize, columnSize);
+        populateIntMatrix(matrixB);
 
-        showMatrix(matrixA, columnSize, rowSize,  "Matrix A");
-        showMatrix(matrixB, columnSize, rowSize,  "Matrix B");
+        showIntMatrix(matrixA,  "Matrix A");
+        showIntMatrix(matrixB,  "Matrix B");
 
-        var matrixS = createMatrix(columnSize, rowSize);
-        var matrixD = createMatrix(columnSize, rowSize);
+        var matrixS = createIntMatrix(rowSize, columnSize);
+        var matrixD = createIntMatrix(rowSize, columnSize);
 
         for (i in 0 until columnSize){
             for (j in 0 until rowSize){
@@ -94,8 +95,8 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        showMatrix(matrixS, columnSize, rowSize,  "Matrix S");
-        showMatrix(matrixD, columnSize, rowSize,  "Matrix S");
+        showIntMatrix(matrixS,  "Matrix S");
+        showIntMatrix(matrixD,  "Matrix S");
     }
 
     fun exercise3(){
@@ -107,8 +108,8 @@ class MainActivity : AppCompatActivity() {
         var columnSize = 5;
         var rowSize = 5;
 
-        var matrix = createMatrix(columnSize, rowSize);
-        populateMatrix(matrix, columnSize, rowSize);
+        var matrix = createIntMatrix(columnSize, rowSize);
+        populateIntMatrix(matrix);
 
         var matrixMessage = "";
         for (i in 0 until columnSize){
@@ -138,32 +139,79 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun createMatrix(columnLength : Int, rowsLength: Int) : Array<IntArray> {
-        var matrix = Array(columnLength, { IntArray(rowsLength) });
+    fun exercise4(){
+        var matrixA = createDoubleMatrix(5, 3);
+        populateDoubleMatrix(matrixA);
+
+        showDoubleMatrix(matrixA, "Matrix A before changes");
+
+        for (i in 0 until matrixA.size){
+            val maxValue = matrixA[i].maxOrNull() ?: 1.0;
+
+            for (j in 0 until matrixA[i].size){
+                matrixA[i][j] /= maxValue
+            }
+        }
+
+        showDoubleMatrix(matrixA, "Matrix A after changes");
+    }
+
+    fun createIntMatrix(rowsLength: Int, columnLength : Int,) : Array<IntArray> {
+        var matrix = Array(rowsLength, { IntArray(columnLength) });
 
         return matrix;
     }
 
-    fun populateMatrix(matrix : Array<IntArray>, columnLength : Int, rowsLength: Int) : Array<IntArray> {
+    fun createDoubleMatrix(rowsLength: Int, columnLength : Int) : Array<DoubleArray> {
+        var matrix = Array(rowsLength, { DoubleArray(columnLength) });
+
+        return matrix;
+    }
+
+    fun populateIntMatrix(matrix : Array<IntArray>) {
         var matrixValue = 1;
 
         for (i in 0 until matrix.size){
-            for (j in 0 until rowsLength){
+            for (j in 0 until matrix[i].size){
                 matrix[i][j] = matrixValue;
                 matrixValue++;
             }
         }
-
-        return matrix;
     }
 
-    fun showMatrix(matrix : Array<IntArray>, columnSize : Int, rowSize : Int, prompt : String = "Default Matrix"){
+    fun populateDoubleMatrix(matrix : Array<DoubleArray>) {
+        var matrixValue = 1.0;
+
+        for (i in 0 until matrix.size){
+            for (j in 0 until matrix[i].size){
+                matrix[i][j] = matrixValue;
+                matrixValue++;
+            }
+        }
+    }
+
+    fun showIntMatrix(matrix : Array<IntArray>, prompt : String = "Default Matrix"){
         Log.i("DEBUG-TEST", prompt);
         Log.i("DEBUG-TEST", "-------------------------------------------");
         var matrixMessage = "";
-        for (i in 0 until columnSize){
-            for (j in 0 until rowSize){
+        for (i in 0 until matrix.size){
+            for (j in 0 until matrix[i].size){
                 matrixMessage += if (matrix[i][j] < 10) "[0${matrix[i][j]}] " else "[${matrix[i][j]}] ";
+            }
+
+            matrixMessage += "\n";
+        }
+        Log.i("DEBUG-TEST", matrixMessage);
+        Log.i("DEBUG-TEST", "-------------------------------------------");
+    }
+
+    fun showDoubleMatrix(matrix : Array<DoubleArray>, prompt : String = "Default Matrix"){
+        Log.i("DEBUG-TEST", prompt);
+        Log.i("DEBUG-TEST", "-------------------------------------------");
+        var matrixMessage = "";
+        for (i in 0 until matrix.size){
+            for (j in 0 until matrix[i].size){
+                matrixMessage += if (matrix[i][j] in 1.0 .. 9.0) "[0${"%.2f".format(matrix[i][j])}] " else "[${"%.2f".format(matrix[i][j])}] ";
             }
 
             matrixMessage += "\n";
