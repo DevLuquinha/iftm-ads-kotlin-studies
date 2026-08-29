@@ -21,7 +21,8 @@ class MainActivity : AppCompatActivity() {
 //        exercise3();
 //        exercise4();
 //        exercise5();
-        exercise6();
+//        exercise6();
+        exercise7();
     }
 
     fun exercise1(){
@@ -204,6 +205,41 @@ class MainActivity : AppCompatActivity() {
         showIntMatrix(matrixS, "Matrix S");
     }
 
+    fun exercise7(){
+        var array = DoubleArray(10, {i -> i + 1.0});
+        showDoubleArray(array);
+
+        // 1. Get the average
+        var average = array.average();
+
+        // 2. Subtract each value with average
+        for (i in 0 until array.size){
+            array[i] -= average;
+        }
+
+        showDoubleArray(array, "Array minus Average = $average");
+
+        // 3. Pow each value
+        for (i in 0 until array.size){
+            array[i] = Math.pow(array[i], 2.0);
+        }
+
+        showDoubleArray(array, "Array pow 2");
+
+        // 4. Sum all values
+        val valuesSum = array.sum();
+
+        Log.i("DEBUG-TEST", "All values sum = $valuesSum");
+
+        // 5. Divide by the array length
+        val quotient = valuesSum / array.size.toDouble();
+        Log.i("DEBUG-TEST", "The quotient is = $quotient");
+
+        // 6. Finally the STANDARD DEVIATION
+        val standardDeviation = Math.sqrt(quotient);
+        Log.i("DEBUG-TEST", "THE STANDARD DEVIATION IS $standardDeviation");
+    }
+
     fun multiplyMatrix(
         columnIndexConstant : Int, rowIndexConstant : Int,
         matrixA : Array<IntArray>, matrixB : Array<IntArray>) : Int {
@@ -345,6 +381,17 @@ class MainActivity : AppCompatActivity() {
         var arrayMessage = "";
         for (i in 0 until array.size){
             arrayMessage += if (array[i] < 10) "[0${array[i]}] " else "[${array[i]}] ";
+        }
+        Log.i("DEBUG-TEST", arrayMessage);
+        Log.i("DEBUG-TEST", "-------------------------------------------");
+    }
+
+    fun showDoubleArray(array : DoubleArray, prompt : String = "Default Array"){
+        Log.i("DEBUG-TEST", prompt);
+        Log.i("DEBUG-TEST", "-------------------------------------------");
+        var arrayMessage = "";
+        for (i in 0 until array.size){
+            arrayMessage += if (array[i] in 1.0 .. 9.0) "[0${"%.2f".format(array[i])}] " else "[${"%.2f".format(array[i])}] ";
         }
         Log.i("DEBUG-TEST", arrayMessage);
         Log.i("DEBUG-TEST", "-------------------------------------------");
