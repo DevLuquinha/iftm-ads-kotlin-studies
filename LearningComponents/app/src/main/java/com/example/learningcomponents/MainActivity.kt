@@ -67,6 +67,14 @@ class MainActivity : AppCompatActivity() {
 
         destinationsSpinner.adapter = destinationAdapter
 
+        var reservationsList = ArrayList<String>()
+        var reservationsAdapter = ArrayAdapter(
+            this,
+            android.R.layout.simple_list_item_1,
+            reservationsList
+        )
+        reservationsListView.adapter = reservationsAdapter;
+
         bookTripButton.setOnClickListener {
             var destinationSelected = destinationsSpinner.selectedItem.toString()
 
@@ -86,6 +94,17 @@ class MainActivity : AppCompatActivity() {
 
             var travelInsuranceValue = if (travelInsuranceCheckBox.isChecked) "I want insurance" else "I don't want insurance"
             var rentCarValue = if (rentCarCheckBox.isChecked) "I want rent a car please" else "I'm a richest person man, I don't need rent anything"
+
+            var person = Person(cpf = cpfInput.text.toString(), name = nameInput.text.toString())
+
+            var reservationResult = "- $destinationSelected" +
+                    "\n- $travelModeSelected" +
+                    "\n- $paymentModelSelected" +
+                    "\n- $travelInsuranceValue" +
+                    "\n- $rentCarValue" +
+                    "\n The reservation is for ${person.name} with CPF ${person.cpf}"
+            reservationsList.add(reservationResult)
+            reservationsListView.adapter = reservationsAdapter;
         }
     }
 }
