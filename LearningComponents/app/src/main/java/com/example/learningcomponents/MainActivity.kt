@@ -104,7 +104,10 @@ class MainActivity : AppCompatActivity() {
                     "\n- $rentCarValue" +
                     "\n The reservation is for ${person.name} with CPF ${person.cpf}"
             reservationsList.add(reservationResult)
-            reservationsListView.adapter = reservationsAdapter;
+            reservationsListView.adapter = reservationsAdapter
+
+            cpfInput.text.clear();
+            nameInput.text.clear();
         }
     }
 }
