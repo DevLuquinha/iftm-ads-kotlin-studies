@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/travel_preparation"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/et_cpf"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <EditText
+        android:id="@+id/et_cpf"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/cpf"
+        android:inputType="number"
+        app:layout_constraintBottom_toTopOf="@+id/et_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <EditText
+        android:id="@+id/et_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/name"
+        android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@+id/sp_destinations"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_cpf"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <Button
+        android:id="@+id/btn_bookTrip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/book_trip"
+        app:layout_constraintBottom_toTopOf="@+id/lv_reservations"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cb_insurance"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <RadioGroup
+        android:id="@+id/rg_travelmode"
+        android:layout_width="149dp"
+        android:layout_height="147dp"
+        app:layout_constraintBottom_toTopOf="@+id/cb_insurance"
+        app:layout_constraintEnd_toStartOf="@+id/rb_paymentmode"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sp_destinations"
+        app:layout_constraintVertical_bias="0.5">
+
+        <RadioButton
+            android:id="@+id/rb_car"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/car" />
+
+        <RadioButton
+            android:id="@+id/rb_bus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/bus" />
+
+        <RadioButton
+            android:id="@+id/rb_airplane"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/airplane" />
+    </RadioGroup>
+
+    <RadioGroup
+        android:id="@+id/rb_paymentmode"
+        android:layout_width="149dp"
+        android:layout_height="152dp"
+        app:layout_constraintBottom_toTopOf="@+id/cb_rentCar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/rg_travelmode"
+        app:layout_constraintTop_toBottomOf="@+id/sp_destinations"
+        app:layout_constraintVertical_bias="0.5">
+
+        <RadioButton
+            android:id="@+id/rb_debitCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/debit_card" />
+
+        <RadioButton
+            android:id="@+id/rb_creditCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/credit_card" />
+
+        <RadioButton
+            android:id="@+id/rb_pix"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/pix" />
+    </RadioGroup>
+
+    <CheckBox
+        android:id="@+id/cb_insurance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/travel_insurance"
+        app:layout_constraintBottom_toTopOf="@+id/btn_bookTrip"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.125"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rg_travelmode"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <CheckBox
+        android:id="@+id/cb_rentCar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/rent_car"
+        app:layout_constraintBottom_toTopOf="@+id/btn_bookTrip"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.695"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rb_paymentmode"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <Spinner
+        android:id="@+id/sp_destinations"
+        android:layout_width="365dp"
+        android:layout_height="58dp"
+        app:layout_constraintBottom_toTopOf="@+id/rb_paymentmode"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_name"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <ListView
+        android:id="@+id/lv_reservations"
+        android:layout_width="409dp"
+        android:layout_height="232dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_bookTrip"
+        app:layout_constraintVertical_bias="0.5" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

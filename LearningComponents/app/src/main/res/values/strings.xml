@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">LearningComponents</string>
+    <string name="travel_preparation">Travel Preparation</string>
+    <string name="cpf">CPF</string>
+    <string name="name">Name</string>
+    <string name="book_trip">Book Trip</string>
+    <string name="car">Car</string>
+    <string name="bus">Bus</string>
+    <string name="airplane">AirPlane</string>
+    <string name="debit_card">Debit Card</string>
+    <string name="credit_card">Credit Card</string>
+    <string name="pix">PIX</string>
+    <string name="travel_insurance">Travel Insurance</string>
+    <string name="rent_car">Rent Car</string>
+</resources>
