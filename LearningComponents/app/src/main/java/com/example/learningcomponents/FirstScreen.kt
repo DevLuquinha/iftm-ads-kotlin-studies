@@ -1,5 +1,6 @@
 package com.example.learningcomponents
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.Button
@@ -9,13 +10,9 @@ import android.widget.ListView
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.Spinner
-import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 
-class MainActivity : AppCompatActivity() {
+class FirstScreen : AppCompatActivity() {
     lateinit var cpfInput : EditText
     lateinit var nameInput : EditText
     lateinit var destinationsSpinner : Spinner
@@ -32,9 +29,11 @@ class MainActivity : AppCompatActivity() {
     lateinit var bookTripButton : Button
     lateinit var reservationsListView : ListView
 
+    lateinit var goToSecondScreenButton : Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.first_screen)
 
         // Binding components
         cpfInput = findViewById(R.id.et_cpf)
@@ -52,6 +51,7 @@ class MainActivity : AppCompatActivity() {
         rentCarCheckBox = findViewById(R.id.cb_rentCar)
         bookTripButton = findViewById(R.id.btn_bookTrip)
         reservationsListView = findViewById(R.id.lv_reservations)
+        goToSecondScreenButton = findViewById(R.id.btn_toSecondScreen)
 
         var destinationList = ArrayList<String>()
         destinationList.add("Rio de Janeiro")
@@ -108,6 +108,11 @@ class MainActivity : AppCompatActivity() {
 
             cpfInput.text.clear();
             nameInput.text.clear();
+        }
+
+        goToSecondScreenButton.setOnClickListener {
+            val switchScreen = Intent(this, SecondScreen::class.java)
+            this.startActivity(switchScreen)
         }
     }
 }
