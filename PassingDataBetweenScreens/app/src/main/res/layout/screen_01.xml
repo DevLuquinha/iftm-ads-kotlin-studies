@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Screen01">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Student HUB"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toTopOf="@+id/et_academicRecord"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <EditText
+        android:id="@+id/et_academicRecord"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Academic Record"
+        android:inputType="number"
+        app:layout_constraintBottom_toTopOf="@+id/et_studentName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <EditText
+        android:id="@+id/et_studentName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Student Name"
+        android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@+id/et_studentAge"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_academicRecord"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <EditText
+        android:id="@+id/et_studentAge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Student Age"
+        android:inputType="number"
+        app:layout_constraintBottom_toTopOf="@+id/rg_courses"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_studentName"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <RadioGroup
+        android:id="@+id/rg_courses"
+        android:layout_width="328dp"
+        android:layout_height="173dp"
+        app:layout_constraintBottom_toTopOf="@+id/cb_residentUberaba"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_studentAge"
+        app:layout_constraintVertical_bias="0.5">
+
+        <RadioButton
+            android:id="@+id/rb_systemAnalysisDevelopment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="System Analysis and Development" />
+
+        <RadioButton
+            android:id="@+id/rb_computerEngineer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Computer Engineer" />
+
+        <RadioButton
+            android:id="@+id/rb_bachelorsDegreeMath"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Bachelor's Degree in Mathematics"
+            tools:layout_editor_absoluteX="-82dp"
+            tools:layout_editor_absoluteY="559dp" />
+
+    </RadioGroup>
+
+    <CheckBox
+        android:id="@+id/cb_residentUberaba"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Resident of Uberaba"
+        app:layout_constraintBottom_toTopOf="@+id/btn_addStudent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.14"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rg_courses"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <Button
+        android:id="@+id/btn_addStudent"
+        android:layout_width="186dp"
+        android:layout_height="72dp"
+        android:text="Add Student"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cb_residentUberaba"
+        app:layout_constraintVertical_bias="0.5" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
