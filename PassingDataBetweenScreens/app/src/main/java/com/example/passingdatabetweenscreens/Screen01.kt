@@ -44,9 +44,11 @@ class Screen01 : AppCompatActivity() {
             );
 
             val dataLoader = Bundle()
+            dataLoader.putParcelable("NEW_STUDENT", newStudent)
 
             val switchScreenIntent = Intent(this, Screen02::class.java)
             switchScreenIntent.putExtras(dataLoader)
+
             this.startActivity(switchScreenIntent)
         }
     }

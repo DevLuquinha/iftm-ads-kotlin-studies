@@ -13,6 +13,10 @@ class Student(
 ) : Parcelable {
 
     override fun toString(): String {
-        return "AR: $academicRecord | NAME: $name | AGE: $age | COURSE NAME: $courseName | IS RESIDENT UBERABA $isResidentUberaba"
+        return "- AR: $academicRecord " +
+                "\n- NAME: $name " +
+                "\n- AGE: $age " +
+                "\n- COURSE NAME: $courseName " +
+                "\n- ${if (isResidentUberaba) "LIVES IN UBERABA " else "NOT LIVES IN UBERABA"}"
     }
 }
