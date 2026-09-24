@@ -11,7 +11,7 @@ class Student(
     var courseName: String,
     var isResidentUberaba: Boolean
 ) : Parcelable {
-
+    
     override fun toString(): String {
         return "- AR: $academicRecord " +
                 "\n- NAME: $name " +

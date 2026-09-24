@@ -26,6 +26,10 @@ class Screen02 : AppCompatActivity() {
 
         studentsListView.adapter = studentsArrayAdapter
 
+        val dbHelper = MyDatabaseHelper(this)
+        val db = dbHelper.readableDatabase
+        val dbResult = db.rawQuery("SELECT * FROM students", null)
+
         goBackButton.setOnClickListener {
             this.finish()
         }

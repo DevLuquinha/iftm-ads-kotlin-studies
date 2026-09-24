@@ -1,5 +1,6 @@
 package com.example.passingdatabetweenscreens
 
+import android.content.ContentValues
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -48,6 +49,18 @@ class Screen01 : AppCompatActivity() {
 
             val switchScreenIntent = Intent(this, Screen02::class.java)
             switchScreenIntent.putExtras(dataLoader)
+
+            val dbHelper = MyDatabaseHelper(this)
+            val db = dbHelper.writableDatabase
+            val values = ContentValues().apply {
+                put("name", newStudent.name)
+                put("age", newStudent.age)
+                put("academic_record", newStudent.academicRecord)
+                put("course_name", newStudent.courseName)
+                put("is_resident_uberaba", newStudent.isResidentUberaba)
+            }
+
+            val newRowId = db.insert("students", null, values)
 
             this.startActivity(switchScreenIntent)
         }
