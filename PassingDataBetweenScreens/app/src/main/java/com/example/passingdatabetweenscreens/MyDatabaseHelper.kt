@@ -12,22 +12,21 @@ class MyDatabaseHelper(context: Context) :
 
         private const val CREATE_TABLE_STUDENTS = """
             CREATE TABLE students (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                academic_record TEXT PRIMARY KEY,
                 name TEXT,
                 age INTEGER,
-                academic_record TEXT,
                 course_name TEXT,
-                is_resident_uberaba BOOLEAN
+                is_resident_uberaba INTEGER
             )
         """
     }
 
-    override fun onCreate(db: SQLiteDatabase) {
-        db.execSQL(CREATE_TABLE_STUDENTS)
+    override fun onCreate(db: SQLiteDatabase?) {
+        db?.execSQL(CREATE_TABLE_STUDENTS)
     }
 
-    override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
-        db.execSQL("DROP TABLE IF EXISTS students")
+    override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
+        db?.execSQL("DROP TABLE IF EXISTS students")
         onCreate(db)
     }
 }

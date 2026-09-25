@@ -8,6 +8,7 @@ import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.RadioButton
 import android.widget.RadioGroup
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
 class Screen01 : AppCompatActivity() {
@@ -20,6 +21,7 @@ class Screen01 : AppCompatActivity() {
     lateinit var bachelorsDegreeMathRadioButton : RadioButton
     lateinit var residentUberabaCheckBox : CheckBox
     lateinit var addStudentButton : Button
+    lateinit var showStudentsButton : Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +36,7 @@ class Screen01 : AppCompatActivity() {
         bachelorsDegreeMathRadioButton = findViewById(R.id.rb_bachelorsDegreeMath)
         residentUberabaCheckBox = findViewById(R.id.cb_residentUberaba)
         addStudentButton = findViewById(R.id.btn_addStudent)
+        showStudentsButton = findViewById(R.id.btn_showStudents)
 
         addStudentButton.setOnClickListener {
             val newStudent = Student(
@@ -51,17 +54,22 @@ class Screen01 : AppCompatActivity() {
             switchScreenIntent.putExtras(dataLoader)
 
             val dbHelper = MyDatabaseHelper(this)
-            val db = dbHelper.writableDatabase
+            val writableDatabaseInstance = dbHelper.writableDatabase
             val values = ContentValues().apply {
+                put("academic_record", newStudent.academicRecord)
                 put("name", newStudent.name)
                 put("age", newStudent.age)
-                put("academic_record", newStudent.academicRecord)
                 put("course_name", newStudent.courseName)
                 put("is_resident_uberaba", newStudent.isResidentUberaba)
             }
 
-            val newRowId = db.insert("students", null, values)
+            val newRowId = writableDatabaseInstance.insert("students", null, values)
 
+            Toast.makeText(this, newRowId.toString(), Toast.LENGTH_SHORT).show()
+        }
+
+        showStudentsButton.setOnClickListener {
+            val switchScreenIntent = Intent(this, Screen02::class.java)
             this.startActivity(switchScreenIntent)
         }
     }
@@ -75,5 +83,4 @@ class Screen01 : AppCompatActivity() {
 
         return "Any course was selected"
     }
-
 }

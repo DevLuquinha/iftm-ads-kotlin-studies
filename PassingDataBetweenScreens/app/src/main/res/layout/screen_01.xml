@@ -114,9 +114,20 @@
         android:text="Add Student"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.053"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cb_residentUberaba"
         app:layout_constraintVertical_bias="0.5" />
+
+    <Button
+        android:id="@+id/btn_showStudents"
+        android:layout_width="186dp"
+        android:layout_height="72dp"
+        android:text="Show Students"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.951"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cb_residentUberaba" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
