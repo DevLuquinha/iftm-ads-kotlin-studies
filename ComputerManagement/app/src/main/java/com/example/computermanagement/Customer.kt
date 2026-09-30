@@ -70,4 +70,10 @@ class Customer (
     public fun setComputerPrice(computerPrice : Double){
         this.computerPrice = computerPrice;
     }
+
+    override fun toString() : String{
+        return """
+            - CPF: $cpf | Name: $name | Email: $email | Phone Number: $phoneNumber | Computer Model: $computerModel | Computer Price: $computerPrice
+        """
+    }
 }
