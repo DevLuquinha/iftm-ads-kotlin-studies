@@ -13,15 +13,15 @@
         android:layout_height="wrap_content"
         android:text="Computer Store"
         android:textSize="48sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5" />
+        app:layout_constraintVertical_bias="0.044" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btn_execute"
         android:layout_width="342dp"
         android:layout_height="62dp"
         android:text="Execute"
@@ -32,7 +32,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <RadioGroup
-        android:id="@+id/radioGroup"
+        android:id="@+id/rg_customerActions"
         android:layout_width="342dp"
         android:layout_height="235dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -49,37 +49,37 @@
             android:text="What do you want to do?" />
 
         <RadioButton
-            android:id="@+id/radioButton"
+            android:id="@+id/rb_addCustomer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:checked="true"
             android:text="Record a customer" />
 
         <RadioButton
-            android:id="@+id/radioButton2"
+            android:id="@+id/rb_editCustomer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Edit a customer" />
 
         <RadioButton
-            android:id="@+id/radioButton3"
+            android:id="@+id/rb_deleteCustomer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Delete a customer" />
 
         <RadioButton
-            android:id="@+id/radioButton4"
+            android:id="@+id/rb_customerSearch"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Customer search" />
     </RadioGroup>
 
     <Button
-        android:id="@+id/button6"
+        android:id="@+id/btn_showComputersByPrice"
         android:layout_width="265dp"
         android:layout_height="63dp"
         android:text="Show Computers By Price"
-        app:layout_constraintBottom_toTopOf="@+id/button7"
+        app:layout_constraintBottom_toTopOf="@+id/btn_averageSalesAmount"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -93,15 +93,15 @@
         android:text="Manager Section"
         android:textAlignment="center"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/button6"
+        app:layout_constraintBottom_toTopOf="@+id/btn_showComputersByPrice"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button"
+        app:layout_constraintTop_toBottomOf="@+id/btn_execute"
         app:layout_constraintVertical_bias="0.5" />
 
     <Button
-        android:id="@+id/button7"
+        android:id="@+id/btn_averageSalesAmount"
         android:layout_width="266dp"
         android:layout_height="65dp"
         android:text="Average Sales Amount"
@@ -109,16 +109,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button6"
+        app:layout_constraintTop_toBottomOf="@+id/btn_showComputersByPrice"
         app:layout_constraintVertical_bias="0.5" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Client Section"
+        android:text="Customer Section"
+        android:textAlignment="center"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/radioGroup"
+        app:layout_constraintBottom_toTopOf="@+id/rg_customerActions"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
