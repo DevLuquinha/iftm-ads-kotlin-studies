@@ -96,7 +96,7 @@
         android:layout_height="46dp"
         android:ems="10"
         android:hint="Computer Price"
-        android:inputType="number"
+        android:inputType="number|numberDecimal"
         app:layout_constraintBottom_toTopOf="@+id/btn_cancel"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.656"
