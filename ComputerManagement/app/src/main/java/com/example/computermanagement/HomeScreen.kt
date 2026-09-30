@@ -1,5 +1,6 @@
 package com.example.computermanagement
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.RadioButton
@@ -28,7 +29,11 @@ class HomeScreen : AppCompatActivity() {
         averageSalesByAmountButton = findViewById(R.id.btn_averageSalesAmount)
 
         executeActionButton.setOnClickListener {
-            Toast.makeText(this, "Action Selected is: ${selectedActionRadioButton.text }", Toast.LENGTH_SHORT).show()
+            selectedActionRadioButton = findViewById(customerActionsRadioGroup.checkedRadioButtonId)
+            if (selectedActionRadioButton.text.equals("Record a customer")){
+                val goToCustomerRecordScreenIntent = Intent(this, CustomerRecordScreen::class.java)
+                this.startActivity(goToCustomerRecordScreenIntent)
+            }
         }
     }
 }
