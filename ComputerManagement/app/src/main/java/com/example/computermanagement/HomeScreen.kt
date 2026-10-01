@@ -33,6 +33,9 @@ class HomeScreen : AppCompatActivity() {
             if (selectedActionRadioButton.text.equals("Record a customer")){
                 val goToCustomerRecordScreenIntent = Intent(this, CustomerRecordScreen::class.java)
                 this.startActivity(goToCustomerRecordScreenIntent)
+            } else if (selectedActionRadioButton.text.equals("Customer search")){
+                val goToCustomerSearchScreenIntent = Intent(this, CustomerSearchScreen::class.java)
+                this.startActivity(goToCustomerSearchScreenIntent)
             }
         }
     }
