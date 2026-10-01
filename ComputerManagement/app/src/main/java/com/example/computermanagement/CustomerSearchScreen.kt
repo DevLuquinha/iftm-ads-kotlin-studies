@@ -6,33 +6,30 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ListView
 import android.widget.TextView
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 
 class CustomerSearchScreen : AppCompatActivity() {
-    lateinit var CustomerCountTextView: TextView
-    lateinit var EmailToSearchEditText: EditText
-    lateinit var SearchCustomerByEmail: Button
-    lateinit var CustomerByEmailResultTextView: TextView
-    lateinit var ComputerModelToSearchEditText: EditText
-    lateinit var SearchCustomersByComputerModel: Button
-    lateinit var CustomersByComputerModelListView: ListView
-    lateinit var GoBackButton: Button
+    lateinit var customerCountTextView: TextView
+    lateinit var emailToSearchEditText: EditText
+    lateinit var searchCustomerByEmail: Button
+    lateinit var customerByEmailResultTextView: TextView
+    lateinit var computerModelToSearchEditText: EditText
+    lateinit var searchCustomersByComputerModel: Button
+    lateinit var customersByComputerModelListView: ListView
+    lateinit var goBackButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.customer_search_screen)
 
-        CustomerCountTextView = findViewById(R.id.tv_customerCount)
-        EmailToSearchEditText = findViewById(R.id.et_emailToSearch)
-        SearchCustomerByEmail = findViewById(R.id.btn_searchCustomerByEmail)
-        CustomerByEmailResultTextView = findViewById(R.id.tv_customerByEmail)
-        ComputerModelToSearchEditText = findViewById(R.id.et_computerModelToSearch)
-        SearchCustomersByComputerModel = findViewById(R.id.btn_searchCustomersByComputerModel)
-        CustomersByComputerModelListView = findViewById(R.id.lv_customersByComputerModel)
-        GoBackButton = findViewById(R.id.btn_goBack)
+        customerCountTextView = findViewById(R.id.tv_customerCount)
+        emailToSearchEditText = findViewById(R.id.et_emailToSearch)
+        searchCustomerByEmail = findViewById(R.id.btn_searchCustomerByEmail)
+        customerByEmailResultTextView = findViewById(R.id.tv_customerByEmail)
+        computerModelToSearchEditText = findViewById(R.id.et_computerModelToSearch)
+        searchCustomersByComputerModel = findViewById(R.id.btn_searchCustomersByComputerModel)
+        customersByComputerModelListView = findViewById(R.id.lv_customersByComputerModel)
+        goBackButton = findViewById(R.id.btn_goBack)
 
         // 1. Get all customer from db
         val customerList = ArrayList<Customer>()
@@ -55,33 +52,33 @@ class CustomerSearchScreen : AppCompatActivity() {
         }
 
         // 2. Update the customer count in view
-        CustomerCountTextView.text = customerList.count().toString()
+        customerCountTextView.text = customerList.count().toString()
 
         // 3. Find customer by email
-        SearchCustomerByEmail.setOnClickListener {
-            CustomerByEmailResultTextView.text = "No customers found..."
+        searchCustomerByEmail.setOnClickListener {
+            customerByEmailResultTextView.text = "No customers found..."
 
             for (customer in customerList){
-                if (customer.getEmail().equals(EmailToSearchEditText.text.toString())){
-                    CustomerByEmailResultTextView.text = customer.toString()
+                if (customer.getEmail().equals(emailToSearchEditText.text.toString())){
+                    customerByEmailResultTextView.text = customer.toString()
                 }
             }
         }
 
         // 4. Find customers by computer model
-        SearchCustomersByComputerModel.setOnClickListener {
+        searchCustomersByComputerModel.setOnClickListener {
             val customersWithComputerTarget = ArrayList<String>()
             for (customer in customerList){
-                if (customer.getComputerModel().equals(ComputerModelToSearchEditText.text.toString())){
+                if (customer.getComputerModel().equals(computerModelToSearchEditText.text.toString())){
                     customersWithComputerTarget.add(customer.toString())
                 }
             }
 
             val arrayAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, customersWithComputerTarget)
-            CustomersByComputerModelListView.adapter = arrayAdapter
+            customersByComputerModelListView.adapter = arrayAdapter
         }
 
-        GoBackButton.setOnClickListener {
+        goBackButton.setOnClickListener {
             this.finish()
         }
     }
