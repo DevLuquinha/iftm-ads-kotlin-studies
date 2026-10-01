@@ -13,12 +13,12 @@
         android:layout_height="wrap_content"
         android:text="Customer Search"
         android:textSize="34sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/textView7"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.044" />
+        app:layout_constraintVertical_bias="0.5" />
 
     <TextView
         android:id="@+id/textView7"
@@ -26,25 +26,25 @@
         android:layout_height="wrap_content"
         android:text="Total number of customers"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/textView11"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.135"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6"
-        app:layout_constraintVertical_bias="0.013" />
+        app:layout_constraintVertical_bias="0.5" />
 
     <TextView
         android:id="@+id/tv_customerByEmail"
-        android:layout_width="341dp"
-        android:layout_height="61dp"
+        android:layout_width="339dp"
+        android:layout_height="wrap_content"
         android:text="No customers found..."
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/textView13"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.519"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6"
-        app:layout_constraintVertical_bias="0.236" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_searchCustomerByEmail"
+        app:layout_constraintVertical_bias="0.5" />
 
     <TextView
         android:id="@+id/textView11"
@@ -52,11 +52,12 @@
         android:layout_height="wrap_content"
         android:text="Search Customer By Email"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/et_emailToSearch"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6"
-        app:layout_constraintVertical_bias="0.092" />
+        app:layout_constraintTop_toBottomOf="@+id/textView7"
+        app:layout_constraintVertical_bias="0.5" />
 
     <TextView
         android:id="@+id/textView13"
@@ -64,12 +65,12 @@
         android:layout_height="wrap_content"
         android:text="Find Customers By Computer Model"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/et_computerModelToSearch"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6"
-        app:layout_constraintVertical_bias="0.333" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_customerByEmail"
+        app:layout_constraintVertical_bias="0.5" />
 
     <TextView
         android:id="@+id/tv_customerCount"
@@ -78,10 +79,10 @@
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.65"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6"
-        app:layout_constraintVertical_bias="0.013" />
+        app:layout_constraintHorizontal_bias="0.35"
+        app:layout_constraintStart_toEndOf="@+id/textView7"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.115" />
 
     <EditText
         android:id="@+id/et_emailToSearch"
@@ -90,12 +91,12 @@
         android:ems="10"
         android:hint="Email"
         android:inputType="text"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.195"
+        app:layout_constraintBottom_toTopOf="@+id/tv_customerByEmail"
+        app:layout_constraintEnd_toStartOf="@+id/btn_searchCustomerByEmail"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView11"
-        app:layout_constraintVertical_bias="0.02" />
+        app:layout_constraintVertical_bias="0.5" />
 
     <EditText
         android:id="@+id/et_computerModelToSearch"
@@ -104,12 +105,12 @@
         android:ems="10"
         android:hint="Computer Model"
         android:inputType="text"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.188"
+        app:layout_constraintBottom_toTopOf="@+id/lv_customersByComputerModel"
+        app:layout_constraintEnd_toStartOf="@+id/btn_searchCustomersByComputerModel"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView11"
-        app:layout_constraintVertical_bias="0.309" />
+        app:layout_constraintTop_toBottomOf="@+id/textView13"
+        app:layout_constraintVertical_bias="0.5" />
 
     <Button
         android:id="@+id/btn_searchCustomerByEmail"
@@ -128,12 +129,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Search"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/lv_customersByComputerModel"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.478"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/et_computerModelToSearch"
         app:layout_constraintTop_toBottomOf="@+id/textView13"
-        app:layout_constraintVertical_bias="0.033" />
+        app:layout_constraintVertical_bias="0.5" />
 
     <Button
         android:id="@+id/btn_goBack"
@@ -151,10 +152,11 @@
         android:id="@+id/lv_customersByComputerModel"
         android:layout_width="373dp"
         android:layout_height="292dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/btn_goBack"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_computerModelToSearch"
-        app:layout_constraintVertical_bias="0.184" />
+        app:layout_constraintVertical_bias="0.5" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
