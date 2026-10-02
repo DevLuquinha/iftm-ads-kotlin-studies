@@ -3,20 +3,16 @@ package com.example.chocolatestorage
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
-import android.widget.RadioButton
 import android.widget.RadioGroup
 import androidx.appcompat.app.AppCompatActivity
-import androidx.constraintlayout.widget.Group
 
 class HomeScreen : AppCompatActivity() {
     lateinit var goCustomerRecordButton: Button
 
     lateinit var customerSectionRadioGroup: RadioGroup
-    lateinit var selectedCustomerSectionRadioButton: RadioButton
     lateinit var executeCustomerSectionButton: Button
 
     lateinit var chocolateSectionRadioGroup: RadioGroup
-    lateinit var selectedChocolateSectionRadioButton: RadioButton
     lateinit var executeChocolateSectionButton: Button
 
     lateinit var goCustomersSearchButton: Button
@@ -46,7 +42,7 @@ class HomeScreen : AppCompatActivity() {
             when(customerSectionRadioGroup.checkedRadioButtonId){
                 R.id.rb_showAllCustomers -> Log.i("TEST-DEV", "Show All Customers")
                 R.id.rb_editCustomer -> Log.i("TEST-DEV", "Edit customer")
-                R.id.rb_deleteCustomer -> Log.i("TEST-DEV", "Delete Customer")
+                R.id.btn_executeCustomerSection -> Log.i("TEST-DEV", "Delete Customer")
             }
         }
 
