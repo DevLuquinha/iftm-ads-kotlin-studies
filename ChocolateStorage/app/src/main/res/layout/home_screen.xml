@@ -52,7 +52,7 @@
         android:layout_height="wrap_content"
         android:text="Manager Section"
         android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/btn_goCustomerSearchs"
+        app:layout_constraintBottom_toTopOf="@+id/btn_goCustomerSearch"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -96,19 +96,19 @@
         app:layout_constraintVertical_bias="0.5">
 
         <RadioButton
-            android:id="@+id/radioButton"
+            android:id="@+id/rb_showAllCustomers"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Show all customers" />
 
         <RadioButton
-            android:id="@+id/radioButton2"
+            android:id="@+id/rb_editCustomer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Edit some customer" />
 
         <RadioButton
-            android:id="@+id/radioButton3"
+            android:id="@+id/rb_deleteCustomer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Delete some customer" />
@@ -132,7 +132,7 @@
         android:layout_marginTop="176dp"
         android:layout_marginBottom="109dp"
         android:text="Execute"
-        app:layout_constraintBottom_toTopOf="@+id/btn_goChocolateSearchs"
+        app:layout_constraintBottom_toTopOf="@+id/btn_goChocolateSearch"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/rg_chocolateSection"
@@ -150,45 +150,45 @@
         app:layout_constraintVertical_bias="0.5">
 
         <RadioButton
-            android:id="@+id/radioButton10"
+            android:id="@+id/rb_showAllChocolates"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Show all chocolates" />
 
         <RadioButton
-            android:id="@+id/radioButton11"
+            android:id="@+id/rb_editChocolates"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Edit some chocolate" />
 
         <RadioButton
-            android:id="@+id/radioButton12"
+            android:id="@+id/rb_deleteChocolate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Delete some chocolate" />
     </RadioGroup>
 
     <Button
-        android:id="@+id/btn_goCustomerSearchs"
+        android:id="@+id/btn_goCustomerSearch"
         android:layout_width="177dp"
         android:layout_height="60dp"
-        android:text="Customer Searchs"
+        android:text="Customer Search"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btn_goChocolateSearchs"
+        app:layout_constraintEnd_toStartOf="@+id/btn_goChocolateSearch"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView8"
         app:layout_constraintVertical_bias="0.5" />
 
     <Button
-        android:id="@+id/btn_goChocolateSearchs"
+        android:id="@+id/btn_goChocolateSearch"
         android:layout_width="177dp"
         android:layout_height="60dp"
-        android:text="Chocolate Searchs"
+        android:text="Chocolate Search"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/btn_goCustomerSearchs"
+        app:layout_constraintStart_toEndOf="@+id/btn_goCustomerSearch"
         app:layout_constraintTop_toBottomOf="@+id/textView8"
         app:layout_constraintVertical_bias="0.5" />
 
