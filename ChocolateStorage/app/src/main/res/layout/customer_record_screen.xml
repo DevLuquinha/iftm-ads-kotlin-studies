@@ -28,6 +28,7 @@
             android:id="@+id/rb_customerNoExists"
             android:layout_width="match_parent"
             android:layout_height="59dp"
+            android:checked="true"
             android:text="No, it's a new customer."
             tools:layout_editor_absoluteY="48dp" />
 

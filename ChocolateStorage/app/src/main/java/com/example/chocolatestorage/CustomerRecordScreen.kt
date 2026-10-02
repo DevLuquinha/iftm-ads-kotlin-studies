@@ -1,9 +1,11 @@
 package com.example.chocolatestorage
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.RadioGroup
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -35,5 +37,36 @@ class CustomerRecordScreen : AppCompatActivity() {
 
         cancelButton = findViewById(R.id.btn_cancelCustomerRecordScreen)
         goChocolateRecordButton = findViewById(R.id.btn_goChocolateRecord)
+
+        cancelButton.setOnClickListener {
+            this.finish()
+        }
+
+        goChocolateRecordButton.setOnClickListener {
+            Log.i("TEST-DEV", "2")
+            if (cpfEditText.text.isEmpty()){
+                showMessage("Error! Type the CPF to continue")
+                return@setOnClickListener
+            }
+
+            if (customerSectionRadioGroup.checkedRadioButtonId == R.id.rb_customerExists){
+                // Check the CPF on database
+
+                // If correct, continue to next screen
+            } else {
+                Log.i("TEST-DEV", """
+                    CPF: ${cpfEditText.text.toString()}
+                    Name: ${nameEditText.text.toString()}
+                    Email: ${emailEditText.text.toString()}
+                    Phone Number: ${phoneNumberEditText.text.toString()}
+                    Age: ${ageEditText.text.toString()}
+                """.trimIndent())
+            }
+        }
     }
+
+    fun showMessage(message: String){
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
+
 }

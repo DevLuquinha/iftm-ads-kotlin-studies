@@ -1,5 +1,6 @@
 package com.example.chocolatestorage
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
@@ -34,11 +35,11 @@ class HomeScreen : AppCompatActivity() {
         goChocolateSearchButton = findViewById(R.id.btn_goChocolateSearch)
 
         goCustomerRecordButton.setOnClickListener {
-            Log.i("TEST-DEV", "1")
+            val intent = Intent(this, CustomerRecordScreen::class.java)
+            this.startActivity(intent)
         }
 
         executeCustomerSectionButton.setOnClickListener {
-            Log.i("TEST-DEV", "2")
             when(customerSectionRadioGroup.checkedRadioButtonId){
                 R.id.rb_showAllCustomers -> Log.i("TEST-DEV", "Show All Customers")
                 R.id.rb_editCustomer -> Log.i("TEST-DEV", "Edit customer")
@@ -47,7 +48,6 @@ class HomeScreen : AppCompatActivity() {
         }
 
         executeChocolateSectionButton.setOnClickListener {
-            Log.i("TEST-DEV", "3")
             when(chocolateSectionRadioGroup.checkedRadioButtonId){
                 R.id.rb_showAllChocolates -> Log.i("TEST-DEV", "Show All Chocolates")
                 R.id.rb_editChocolates -> Log.i("TEST-DEV", "Edit chocolate")
@@ -56,11 +56,9 @@ class HomeScreen : AppCompatActivity() {
         }
 
         goCustomersSearchButton.setOnClickListener {
-            Log.i("TEST-DEV", "4")
         }
 
         goChocolateSearchButton.setOnClickListener {
-            Log.i("TEST-DEV", "5")
         }
     }
 }
