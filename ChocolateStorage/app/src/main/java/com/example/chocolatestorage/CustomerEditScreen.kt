@@ -1,6 +1,8 @@
 package com.example.chocolatestorage
 
+import android.content.ContentValues
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -40,19 +42,94 @@ class CustomerEditScreen : AppCompatActivity() {
             this.finish()
         }
 
-        findCustomerButton.setOnClickListener {
+        val dbHelper = MyDatabaseHelper(this)
 
+        findCustomerButton.setOnClickListener {
+            if (cpfEditText.text.isEmpty()){
+                Toast.makeText(
+                    this,
+                    "Error! Type a CPF to continue",
+                    Toast.LENGTH_SHORT
+                ).show()
+                return@setOnClickListener
+            }
+            val customerList = CustomerDbUtils.getAllCustomers(dbHelper)
+
+            val customer = customerList.find {
+                c -> c.cpf.equals(cpfEditText.text.toString())
+            }
+
+            if (customer == null){
+                Toast.makeText(
+                    this,
+                    "Error! The user doesn't exists, check if the CPF was typed correctly!",
+                    Toast.LENGTH_SHORT
+                ).show()
+
+                nameEditText.text.clear()
+                emailEditText.text.clear()
+                phoneNumberEditText.text.clear()
+                ageEditText.text.clear()
+                customerExists = false
+                return@setOnClickListener
+            }
+
+            nameEditText.setText(customer.name)
+            emailEditText.setText(customer.email)
+            phoneNumberEditText.setText(customer.phoneNumber)
+            ageEditText.setText(customer.age.toString())
+            customerExists = true
         }
 
         editCustomerButton.setOnClickListener {
             if (!customerExists){
                 Toast.makeText(
                     this,
-                    "The user doesn't exists, check if the CPF was typed correctly!",
+                    "Error! The user doesn't exists, check if the CPF was typed correctly!",
                     Toast.LENGTH_SHORT
                 ).show()
 
                 return@setOnClickListener
+            }
+
+            val customer = Customer(
+                cpfEditText.text.toString(),
+                nameEditText.text.toString(),
+                emailEditText.text.toString(),
+                phoneNumberEditText.text.toString(),
+                ageEditText.text.toString().toInt(),
+            )
+
+            val writableInstance = dbHelper.writableDatabase
+            val contentValues = ContentValues().apply {
+                put(MyDatabaseHelper.CUSTOMER_COLUMN_CPF, customer.cpf)
+                put(MyDatabaseHelper.CUSTOMER_COLUMN_NAME, customer.name)
+                put(MyDatabaseHelper.CUSTOMER_COLUMN_EMAIL, customer.email)
+                put(MyDatabaseHelper.CUSTOMER_COLUMN_PHONE_NUMBER, customer.phoneNumber)
+                put(MyDatabaseHelper.CUSTOMER_COLUMN_AGE, customer.age)
+            }
+
+            val rowIndex = writableInstance.update(MyDatabaseHelper.CUSTOMER_TABLE_NAME, contentValues, "${MyDatabaseHelper.CUSTOMER_COLUMN_CPF} = ?", arrayOf(customer.cpf))
+            if (rowIndex < 1){
+                Toast.makeText(
+                    this,
+                    "Something was wrong :(, your customer wasn't edited on the database",
+                    Toast.LENGTH_SHORT
+                ).show()
+            } else {
+                Toast.makeText(
+                    this,
+                    "The customer has been successfully edited!",
+                    Toast.LENGTH_SHORT
+                ).show()
+
+                cpfEditText.text.clear()
+                nameEditText.text.clear()
+                emailEditText.text.clear()
+                phoneNumberEditText.text.clear()
+                ageEditText.text.clear()
+ 
+                this.finish()
             }
         }
     }
