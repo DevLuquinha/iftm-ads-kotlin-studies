@@ -41,7 +41,7 @@ class HomeScreen : AppCompatActivity() {
         executeCustomerSectionButton.setOnClickListener {
             when(customerSectionRadioGroup.checkedRadioButtonId){
                 R.id.rb_showAllCustomers -> goToScreen(ShowAllCustomersScreen())
-                R.id.rb_editCustomer -> Log.i("TEST-DEV", "Edit customer")
+                R.id.rb_editCustomer -> goToScreen(CustomerEditScreen())
                 R.id.btn_executeCustomerSection -> Log.i("TEST-DEV", "Delete Customer")
             }
         }

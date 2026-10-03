@@ -103,7 +103,7 @@ class CustomerRecordScreen : AppCompatActivity() {
                 phoneNumberEditText.text.clear()
                 ageEditText.text.clear()
 
-                this.finish()
+                // GO TO NEXT SCREEN --> Chocolate Screen
             }
         }
     }
