@@ -55,6 +55,7 @@ class HomeScreen : AppCompatActivity() {
         }
 
         goCustomersSearchButton.setOnClickListener {
+            goToScreen(CustomerSearchScreen())
         }
 
         goChocolateSearchButton.setOnClickListener {
