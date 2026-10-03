@@ -128,7 +128,7 @@ class CustomerEditScreen : AppCompatActivity() {
                 emailEditText.text.clear()
                 phoneNumberEditText.text.clear()
                 ageEditText.text.clear()
- 
+
                 this.finish()
             }
         }
