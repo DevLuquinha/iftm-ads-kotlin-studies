@@ -65,7 +65,7 @@ class MyDatabaseHelper (context: Context) :
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
         db?.execSQL("DROP TABLE IF EXISTS $CHOCOLATE_TABLE_NAME")
         db?.execSQL("DROP TABLE IF EXISTS $CUSTOMER_TABLE_NAME")
-        
+
         onCreate(db)
     }
 }

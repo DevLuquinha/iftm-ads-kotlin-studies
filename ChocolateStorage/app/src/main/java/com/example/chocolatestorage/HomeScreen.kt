@@ -35,13 +35,12 @@ class HomeScreen : AppCompatActivity() {
         goChocolateSearchButton = findViewById(R.id.btn_goChocolateSearch)
 
         goCustomerRecordButton.setOnClickListener {
-            val intent = Intent(this, CustomerRecordScreen::class.java)
-            this.startActivity(intent)
+            goToScreen(CustomerRecordScreen())
         }
 
         executeCustomerSectionButton.setOnClickListener {
             when(customerSectionRadioGroup.checkedRadioButtonId){
-                R.id.rb_showAllCustomers -> Log.i("TEST-DEV", "Show All Customers")
+                R.id.rb_showAllCustomers -> goToScreen(ShowAllCustomersScreen())
                 R.id.rb_editCustomer -> Log.i("TEST-DEV", "Edit customer")
                 R.id.btn_executeCustomerSection -> Log.i("TEST-DEV", "Delete Customer")
             }
@@ -60,5 +59,10 @@ class HomeScreen : AppCompatActivity() {
 
         goChocolateSearchButton.setOnClickListener {
         }
+    }
+
+    private fun goToScreen(screenTarget: AppCompatActivity){
+        val intent = Intent(this, screenTarget::class.java)
+        this.startActivity(intent)
     }
 }
