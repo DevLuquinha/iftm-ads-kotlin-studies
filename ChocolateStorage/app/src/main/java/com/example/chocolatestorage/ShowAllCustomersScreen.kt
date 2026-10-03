@@ -5,10 +5,7 @@ import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.ListView
 import android.widget.TextView
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 
 class ShowAllCustomersScreen : AppCompatActivity() {
     lateinit var customersTotalTextView: TextView
@@ -28,7 +25,7 @@ class ShowAllCustomersScreen : AppCompatActivity() {
         }
 
         val dbHelper = MyDatabaseHelper(this)
-        val allCustomers = DatabaseUtils.getAllCustomers(dbHelper)
+        val allCustomers = CustomerDbUtils.getAllCustomers(dbHelper)
         val customersCount = allCustomers.count()
 
         customersTotalTextView.text = customersCount.toString()

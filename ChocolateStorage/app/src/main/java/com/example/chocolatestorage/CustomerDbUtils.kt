@@ -1,6 +1,6 @@
 package com.example.chocolatestorage
 
-class DatabaseUtils {
+class CustomerDbUtils {
     companion object{
         fun getAllCustomers(dbHelper: MyDatabaseHelper): ArrayList<Customer>{
             var customerList = ArrayList<Customer>()
