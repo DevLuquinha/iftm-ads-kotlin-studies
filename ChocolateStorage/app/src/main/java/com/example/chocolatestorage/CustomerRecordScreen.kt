@@ -1,5 +1,6 @@
 package com.example.chocolatestorage
 
+import android.content.ContentValues
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
@@ -48,6 +49,8 @@ class CustomerRecordScreen : AppCompatActivity() {
                 return@setOnClickListener
             }
 
+            val dbHelper = MyDatabaseHelper(this)
+
             if (customerSectionRadioGroup.checkedRadioButtonId == R.id.rb_customerExists){
                 // Check the CPF on database
                 // If correct, continue to next screen
@@ -60,7 +63,41 @@ class CustomerRecordScreen : AppCompatActivity() {
                     ageEditText.text.toString().toInt()
                 )
 
-                Log.i("TEST-DEV", customer.toString())
+                val contentValues = ContentValues().apply {
+                    put(MyDatabaseHelper.CUSTOMER_COLUMN_CPF, customer.cpf)
+                    put(MyDatabaseHelper.CUSTOMER_COLUMN_NAME, customer.name)
+                    put(MyDatabaseHelper.CUSTOMER_COLUMN_EMAIL, customer.email)
+                    put(MyDatabaseHelper.CUSTOMER_COLUMN_PHONE_NUMBER, customer.phoneNumber)
+                    put(MyDatabaseHelper.CUSTOMER_COLUMN_AGE, customer.age)
+                }
+
+                val writableInstance = dbHelper.writableDatabase
+                val rowId = writableInstance.insert(
+                    MyDatabaseHelper.CUSTOMER_TABLE_NAME,
+                    null,
+                    contentValues
+                )
+
+                if (rowId == -1L){
+                    Toast.makeText(
+                        this,
+                        "Something was wrong :(, your customer wasn't added on the database",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    return@setOnClickListener
+                }
+
+                Toast.makeText(
+                    this,
+                    "The customer has been successfully added!",
+                    Toast.LENGTH_SHORT
+                ).show()
+
+                cpfEditText.text.clear()
+                nameEditText.text.clear()
+                emailEditText.text.clear()
+                phoneNumberEditText.text.clear()
+                ageEditText.text.clear()
             }
         }
     }
