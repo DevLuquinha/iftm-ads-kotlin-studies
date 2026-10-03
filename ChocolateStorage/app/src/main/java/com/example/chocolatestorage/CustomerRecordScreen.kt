@@ -43,7 +43,6 @@ class CustomerRecordScreen : AppCompatActivity() {
         }
 
         goChocolateRecordButton.setOnClickListener {
-            Log.i("TEST-DEV", "2")
             if (cpfEditText.text.isEmpty()){
                 showMessage("Error! Type the CPF to continue")
                 return@setOnClickListener
@@ -51,16 +50,17 @@ class CustomerRecordScreen : AppCompatActivity() {
 
             if (customerSectionRadioGroup.checkedRadioButtonId == R.id.rb_customerExists){
                 // Check the CPF on database
-
                 // If correct, continue to next screen
             } else {
-                Log.i("TEST-DEV", """
-                    CPF: ${cpfEditText.text.toString()}
-                    Name: ${nameEditText.text.toString()}
-                    Email: ${emailEditText.text.toString()}
-                    Phone Number: ${phoneNumberEditText.text.toString()}
-                    Age: ${ageEditText.text.toString()}
-                """.trimIndent())
+                val customer = Customer(
+                    cpfEditText.text.toString(),
+                    nameEditText.text.toString(),
+                    emailEditText.text.toString(),
+                    phoneNumberEditText.text.toString(),
+                    ageEditText.text.toString().toInt()
+                )
+
+                Log.i("TEST-DEV", customer.toString())
             }
         }
     }
