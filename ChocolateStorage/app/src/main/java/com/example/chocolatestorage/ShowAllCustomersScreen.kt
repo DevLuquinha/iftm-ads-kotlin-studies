@@ -27,14 +27,20 @@ class ShowAllCustomersScreen : AppCompatActivity() {
             this.finish()
         }
 
-        val customersList = ArrayList<String>()
-        customersList.add("Lucas")
-        customersList.add("Rafa")
-        customersList.add("Felipe")
+        val dbHelper = MyDatabaseHelper(this)
+        val allCustomers = DatabaseUtils.getAllCustomers(dbHelper)
+        val customersCount = allCustomers.count()
 
-        customersTotalTextView.text = customersList.count().toString()
+        customersTotalTextView.text = customersCount.toString()
 
-        val arrayAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, customersList)
-        customersListView.adapter = arrayAdapter
+        if (customersCount > 0){
+            val customersList = ArrayList<String>()
+            for (customer in allCustomers){
+                customersList.add(customer.name)
+            }
+
+            val arrayAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, customersList)
+            customersListView.adapter = arrayAdapter
+        }
     }
 }

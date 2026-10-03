@@ -78,12 +78,16 @@ class CustomerRecordScreen : AppCompatActivity() {
                     contentValues
                 )
 
+                // Something was wrong :(
                 if (rowId == -1L){
                     Toast.makeText(
                         this,
                         "Something was wrong :(, your customer wasn't added on the database",
                         Toast.LENGTH_SHORT
                     ).show()
+
+                    Log.i("ERROR-DEBUG", "CustomerRecordScreen throws the error $rowId")
+
                     return@setOnClickListener
                 }
 
@@ -98,6 +102,8 @@ class CustomerRecordScreen : AppCompatActivity() {
                 emailEditText.text.clear()
                 phoneNumberEditText.text.clear()
                 ageEditText.text.clear()
+
+                this.finish()
             }
         }
     }
