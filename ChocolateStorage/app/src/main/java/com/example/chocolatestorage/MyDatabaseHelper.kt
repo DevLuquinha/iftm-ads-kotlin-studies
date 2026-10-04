@@ -8,7 +8,7 @@ class MyDatabaseHelper (context: Context) :
     SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
     companion object {
         private const val DATABASE_NAME = "MyDatabase.db"
-        private const val DATABASE_VERSION = 1
+        private const val DATABASE_VERSION = 2
 
         // Customer
         const val CUSTOMER_TABLE_NAME = "customer"
@@ -47,6 +47,7 @@ class MyDatabaseHelper (context: Context) :
 
                 FOREIGN KEY ($CHOCOLATE_COLUMN_CUSTOMER_CPF) 
                   REFERENCES $CUSTOMER_TABLE_NAME($CUSTOMER_COLUMN_CPF)
+                  ON DELETE CASCADE
             )
         """
     }
