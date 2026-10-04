@@ -1,5 +1,6 @@
 package com.example.chocolatestorage
 
+import android.content.ContentValues
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -71,6 +72,42 @@ class ChocolateRecordScreen : AppCompatActivity() {
             )
 
             Log.i("TEST-DEV", chocolate.toString())
+            val dbHelper = MyDatabaseHelper(this)
+            val writableInstance = dbHelper.writableDatabase
+
+            val contentValues = ContentValues().apply {
+                put(MyDatabaseHelper.CHOCOLATE_COLUMN_ID, chocolate.id)
+                put(MyDatabaseHelper.CHOCOLATE_COLUMN_AMOUNT_COCOA, chocolate.amountCocoa)
+                put(MyDatabaseHelper.CHOCOLATE_COLUMN_COLOR, chocolate.color)
+                put(MyDatabaseHelper.CHOCOLATE_COLUMN_PRICE, chocolate.price)
+                put(MyDatabaseHelper.CUSTOMER_COLUMN_CPF, chocolate.customerCpf)
+            }
+
+            val rowId = writableInstance.insert(MyDatabaseHelper.CHOCOLATE_TABLE_NAME, null, contentValues)
+            if (rowId == -1L){
+                Toast.makeText(
+                    this,
+                    "Something was wrong :(, your chocolate wasn't added on the database",
+                    Toast.LENGTH_SHORT
+                ).show()
+
+                Log.i("ERROR-DEBUG", "ChocolateRecordScreen throws the error $rowId")
+
+                return@setOnClickListener
+            }
+
+            Toast.makeText(
+                this,
+                "The customer has been successfully added!",
+                Toast.LENGTH_SHORT
+            ).show()
+
+            chocolateIdEditText.text.clear()
+            amountCocoaEditText.text.clear()
+            chocolatePriceEditText.text.clear()
+
+            val intent = Intent(this, HomeScreen::class.java)
+            startActivity(intent)
         }
     }
 
