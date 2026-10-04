@@ -119,5 +119,4 @@ class ChocolateRecordScreen : AppCompatActivity() {
 
         return "Chocolate with new COLOR"
     }
-
 }
