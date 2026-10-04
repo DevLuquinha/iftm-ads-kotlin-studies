@@ -114,6 +114,7 @@
             android:id="@+id/rb_chocolateBlack"
             android:layout_width="match_parent"
             android:layout_height="52dp"
+            android:checked="true"
             android:text="Black" />
 
         <RadioButton

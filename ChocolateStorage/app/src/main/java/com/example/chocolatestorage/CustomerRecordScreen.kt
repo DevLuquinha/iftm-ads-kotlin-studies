@@ -1,6 +1,7 @@
 package com.example.chocolatestorage
 
 import android.content.ContentValues
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
@@ -50,10 +51,31 @@ class CustomerRecordScreen : AppCompatActivity() {
             }
 
             val dbHelper = MyDatabaseHelper(this)
+            val bundle = Bundle()
 
             if (customerSectionRadioGroup.checkedRadioButtonId == R.id.rb_customerExists){
                 // Check the CPF on database
                 // If correct, continue to next screen
+                val allCustomers = CustomerDbUtils.getAllCustomers(dbHelper)
+                val customer = allCustomers.find {
+                    c -> c.cpf.equals(cpfEditText.text.toString())
+                }
+
+                if (customer == null){
+                    Toast.makeText(
+                        this,
+                        "Error! The user doesn't exists, check if the CPF was typed correctly!",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    return@setOnClickListener
+                }
+
+                bundle.putString("CUSTOMER_CPF", customer.cpf)
+                val intent = Intent(this, ChocolateRecordScreen::class.java)
+                intent.putExtras(bundle)
+
+                this.startActivity(intent)
+
             } else {
                 val customer = Customer(
                     cpfEditText.text.toString(),
@@ -104,6 +126,11 @@ class CustomerRecordScreen : AppCompatActivity() {
                 ageEditText.text.clear()
 
                 // GO TO NEXT SCREEN --> Chocolate Screen
+                bundle.putString("CUSTOMER_CPF", customer.cpf)
+                val intent = Intent(this, ChocolateRecordScreen::class.java)
+                intent.putExtras(bundle)
+
+                this.startActivity(intent)
             }
         }
     }
