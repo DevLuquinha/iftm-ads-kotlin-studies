@@ -40,18 +40,18 @@ class ChocolateSearchScreen : AppCompatActivity() {
             }
 
             if (chocolateExpensive != null){
-                mostExpensiveChocolateTextView.text = "${chocolateExpensive.id} with R$ ${chocolateExpensive.price}"
+                mostExpensiveChocolateTextView.text = "${chocolateExpensive.id} with R$${chocolateExpensive.price}"
             }
 
             // 2. Average chocolate price
             val averagePrice = allChocolatesList.sumOf { it.price } / allChocolatesList.size
-            averageChocolatePriceTextView.text = "R$ ${averagePrice}"
+            averageChocolatePriceTextView.text = "R$" + "%.2f".format(averagePrice)
 
             // 3. Chocolates Above 50% Cocoa
             val chocolatesAboveList = ArrayList<String>()
             for (chocolate in allChocolatesList){
                 if (chocolate.amountCocoa > 50){
-                    chocolatesAboveList.add(chocolate.id)
+                    chocolatesAboveList.add(chocolate.toString())
                 }
             }
             val arrayAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, chocolatesAboveList)

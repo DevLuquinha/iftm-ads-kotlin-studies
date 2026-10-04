@@ -98,7 +98,7 @@ class ChocolateRecordScreen : AppCompatActivity() {
 
             Toast.makeText(
                 this,
-                "The customer has been successfully added!",
+                "The chocolate has been successfully added!",
                 Toast.LENGTH_SHORT
             ).show()
 

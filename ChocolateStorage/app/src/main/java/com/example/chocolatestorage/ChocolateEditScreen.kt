@@ -86,6 +86,15 @@ class ChocolateEditScreen : AppCompatActivity() {
                 return@setOnClickListener
             }
 
+            if (amountCocoaEditText.text.toString().toInt() !in 20..90){
+                Toast.makeText(
+                    this,
+                    "Error! Amount of cocoa must be between 20% and 90%!",
+                    Toast.LENGTH_SHORT
+                ).show()
+                return@setOnClickListener
+            }
+
             val writableInstance = dbHelper.writableDatabase
             val contentValues = ContentValues().apply {
                 put(MyDatabaseHelper.CHOCOLATE_COLUMN_ID, chocolateToEdition?.id)

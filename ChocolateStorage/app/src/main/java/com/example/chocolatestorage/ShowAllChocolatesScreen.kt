@@ -32,8 +32,8 @@ class ShowAllChocolatesScreen : AppCompatActivity() {
 
         if (chocolateCount > 0){
             val chocolatesList = ArrayList<String>()
-            for (customer in allChocolates){
-                chocolatesList.add(customer.id)
+            for (chocolate in allChocolates){
+                chocolatesList.add(chocolate.id)
             }
 
             val arrayAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, chocolatesList)
