@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ChocolateEditScreen">
+
+    <Button
+        android:id="@+id/btn_cancelChocolateEditScreen"
+        android:layout_width="113dp"
+        android:layout_height="64dp"
+        android:text="Cancel"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btn_editChocolate"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_chocolatePrice2"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <Button
+        android:id="@+id/btn_editChocolate"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
+        android:text="Edit"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btn_cancelChocolateEditScreen"
+        app:layout_constraintTop_toBottomOf="@+id/et_chocolatePrice2"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <TextView
+        android:id="@+id/textView22"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Chocolate Edit"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView23"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <TextView
+        android:id="@+id/textView23"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Type the chocolate ID to continue edition"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/btn_findChocolateToEdit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView22"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <EditText
+        android:id="@+id/et_chocolateId2"
+        android:layout_width="246dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Chocolate ID"
+        android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@+id/et_amountCocoa2"
+        app:layout_constraintEnd_toStartOf="@+id/btn_findChocolateToEdit"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView23"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <Button
+        android:id="@+id/btn_findChocolateToEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Find"
+        app:layout_constraintBottom_toTopOf="@+id/et_amountCocoa2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/et_chocolateId2"
+        app:layout_constraintTop_toBottomOf="@+id/textView23"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <EditText
+        android:id="@+id/et_amountCocoa2"
+        android:layout_width="365dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Amount of cocoa (20%-90%)"
+        android:inputType="number"
+        app:layout_constraintBottom_toTopOf="@+id/textView24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_chocolateId2"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <TextView
+        android:id="@+id/textView24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Chocolate color"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/rg_chocolateColor2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_amountCocoa2"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <RadioGroup
+        android:id="@+id/rg_chocolateColor2"
+        android:layout_width="356dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/et_chocolatePrice2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView24"
+        app:layout_constraintVertical_bias="0.5">
+
+        <RadioButton
+            android:id="@+id/rb_chocolateBlack2"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:checked="true"
+            android:text="Black" />
+
+        <RadioButton
+            android:id="@+id/rb_chocolateWhite2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="White" />
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/et_chocolatePrice2"
+        android:layout_width="365dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Chocolate Price"
+        android:inputType="number|numberDecimal"
+        app:layout_constraintBottom_toTopOf="@+id/btn_cancelChocolateEditScreen"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rg_chocolateColor2"
+        app:layout_constraintVertical_bias="0.5" />
+</androidx.constraintlayout.widget.ConstraintLayout>

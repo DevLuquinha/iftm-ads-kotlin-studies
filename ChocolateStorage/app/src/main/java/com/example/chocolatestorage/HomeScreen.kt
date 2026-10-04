@@ -48,9 +48,9 @@ class HomeScreen : AppCompatActivity() {
 
         executeChocolateSectionButton.setOnClickListener {
             when(chocolateSectionRadioGroup.checkedRadioButtonId){
-                R.id.rb_showAllChocolates -> Log.i("TEST-DEV", "Show All Chocolates")
-                R.id.rb_editChocolates -> Log.i("TEST-DEV", "Edit chocolate")
-                R.id.rb_deleteChocolate -> Log.i("TEST-DEV", "Delete chocolate")
+                R.id.rb_showAllChocolates -> goToScreen(ShowAllChocolatesScreen())
+                R.id.rb_editChocolates -> goToScreen(ChocolateEditScreen())
+                R.id.rb_deleteChocolate -> goToScreen(ChocolateDeleteScreen())
             }
         }
 
@@ -59,6 +59,7 @@ class HomeScreen : AppCompatActivity() {
         }
 
         goChocolateSearchButton.setOnClickListener {
+            goToScreen(ChocolateSearchScreen())
         }
     }
 
