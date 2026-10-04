@@ -4,6 +4,17 @@ build/
 local.properties
 *.apk
 *.aab
+.kotlin/
+.externalNativeBuild/
+.cxx/
+
+# Assinatura de Apps
+*.jks
+*.keystore
+
+# Arquivos de Entrega (projeto compactado com o APK)
+*.rar
+*.zip
 
 # Android Studio / IntelliJ
 .idea/
