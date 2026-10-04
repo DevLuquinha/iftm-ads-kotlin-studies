@@ -1,6 +1,7 @@
 package com.example.chocolatestorage
 
 import android.os.Bundle
+import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.ListView
 import android.widget.TextView
@@ -21,6 +22,22 @@ class ShowAllChocolatesScreen : AppCompatActivity() {
 
         goHomeButton.setOnClickListener {
             this.finish()
+        }
+
+        val dbHelper = MyDatabaseHelper(this)
+        val allChocolates = ChocolateDbUtils.getAllChocolates(dbHelper)
+        val chocolateCount = allChocolates.count()
+
+        chocolatesTotalTextView.text = chocolateCount.toString()
+
+        if (chocolateCount > 0){
+            val chocolatesList = ArrayList<String>()
+            for (customer in allChocolates){
+                chocolatesList.add(customer.id)
+            }
+
+            val arrayAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, chocolatesList)
+            chocolatesListView.adapter = arrayAdapter
         }
     }
 }
