@@ -80,7 +80,7 @@ class ChocolateRecordScreen : AppCompatActivity() {
                 put(MyDatabaseHelper.CHOCOLATE_COLUMN_AMOUNT_COCOA, chocolate.amountCocoa)
                 put(MyDatabaseHelper.CHOCOLATE_COLUMN_COLOR, chocolate.color)
                 put(MyDatabaseHelper.CHOCOLATE_COLUMN_PRICE, chocolate.price)
-                put(MyDatabaseHelper.CUSTOMER_COLUMN_CPF, chocolate.customerCpf)
+                put(MyDatabaseHelper.CHOCOLATE_COLUMN_CUSTOMER_CPF, chocolate.customerCpf)
             }
 
             val rowId = writableInstance.insert(MyDatabaseHelper.CHOCOLATE_TABLE_NAME, null, contentValues)
