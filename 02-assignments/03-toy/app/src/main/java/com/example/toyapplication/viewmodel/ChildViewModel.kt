@@ -31,6 +31,12 @@ class ChildViewModel(private val repository: ChildRepository) : ViewModel() {
         }
     }
 
+    fun findAll(callback: (List<Child>) -> Unit) {
+        viewModelScope.launch {
+            callback(repository.findAll())
+        }
+    }
+
     fun findByChildCpf(cpf: String, callback: (Child?) -> Unit) {
         viewModelScope.launch {
             val child = repository.findByChildCpf(cpf)
