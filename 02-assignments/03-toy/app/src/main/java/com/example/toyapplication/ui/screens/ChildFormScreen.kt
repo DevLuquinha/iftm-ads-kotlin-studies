@@ -25,21 +25,26 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.toyapplication.data.Child
+import com.example.toyapplication.ui.navigation.SelectedChild
 import com.example.toyapplication.viewmodel.ChildViewModel
 
 @Composable
 fun ChildFormScreen(navController: NavController, viewModel: ChildViewModel) {
     val context = LocalContext.current
 
-    // One state for each field of the form
-    var childCpf by remember { mutableStateOf("") }
-    var childName by remember { mutableStateOf("") }
-    var childAge by remember { mutableStateOf("") }
-    var guardianCpf by remember { mutableStateOf("") }
-    var guardianName by remember { mutableStateOf("") }
-    var guardianEmail by remember { mutableStateOf("") }
-    var guardianPhone by remember { mutableStateOf("") }
-    var professionalName by remember { mutableStateOf("") }
+    // Child chosen on the list screen (null = register a new child)
+    val childToEdit = SelectedChild.child
+    val isEditing = childToEdit != null
+
+    // One state for each field of the form (filled with the child's data when editing)
+    var childCpf by remember { mutableStateOf(childToEdit?.childCpf ?: "") }
+    var childName by remember { mutableStateOf(childToEdit?.childName ?: "") }
+    var childAge by remember { mutableStateOf(childToEdit?.childAge?.toString() ?: "") }
+    var guardianCpf by remember { mutableStateOf(childToEdit?.guardianCpf ?: "") }
+    var guardianName by remember { mutableStateOf(childToEdit?.guardianName ?: "") }
+    var guardianEmail by remember { mutableStateOf(childToEdit?.guardianEmail ?: "") }
+    var guardianPhone by remember { mutableStateOf(childToEdit?.guardianPhone ?: "") }
+    var professionalName by remember { mutableStateOf(childToEdit?.professionalName ?: "") }
 
     var errorMessage by remember { mutableStateOf<String?>(null) }
 
@@ -50,9 +55,13 @@ fun ChildFormScreen(navController: NavController, viewModel: ChildViewModel) {
             .padding(24.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
-        Text(text = "Register child", style = MaterialTheme.typography.headlineSmall)
+        Text(
+            text = if (isEditing) "Edit child" else "Register child",
+            style = MaterialTheme.typography.headlineSmall
+        )
 
-        FormField("Child's CPF", childCpf, { childCpf = it }, KeyboardType.Number)
+        // The CPF is the primary key, so it can't be changed when editing
+        FormField("Child's CPF", childCpf, { childCpf = it }, KeyboardType.Number, enabled = !isEditing)
         FormField("Child's name", childName, { childName = it })
         FormField("Child's age", childAge, { childAge = it }, KeyboardType.Number)
         FormField("Guardian's CPF", guardianCpf, { guardianCpf = it }, KeyboardType.Number)
@@ -87,12 +96,19 @@ fun ChildFormScreen(navController: NavController, viewModel: ChildViewModel) {
                         professionalName = professionalName.trim()
                     )
 
-                    viewModel.insert(child) { success ->
-                        if (success) {
-                            Toast.makeText(context, "Child registered!", Toast.LENGTH_SHORT).show()
+                    if (isEditing) {
+                        viewModel.update(child) {
+                            Toast.makeText(context, "Child updated!", Toast.LENGTH_SHORT).show()
                             navController.popBackStack()
-                        } else {
-                            errorMessage = "A child with this CPF is already registered."
+                        }
+                    } else {
+                        viewModel.insert(child) { success ->
+                            if (success) {
+                                Toast.makeText(context, "Child registered!", Toast.LENGTH_SHORT).show()
+                                navController.popBackStack()
+                            } else {
+                                errorMessage = "A child with this CPF is already registered."
+                            }
                         }
                     }
                 }
@@ -117,13 +133,15 @@ private fun FormField(
     label: String,
     value: String,
     onValueChange: (String) -> Unit,
-    keyboardType: KeyboardType = KeyboardType.Text
+    keyboardType: KeyboardType = KeyboardType.Text,
+    enabled: Boolean = true
 ) {
     OutlinedTextField(
         value = value,
         onValueChange = onValueChange,
         label = { Text(text = label) },
         singleLine = true,
+        enabled = enabled,
         keyboardOptions = KeyboardOptions(keyboardType = keyboardType),
         modifier = Modifier.fillMaxWidth()
     )

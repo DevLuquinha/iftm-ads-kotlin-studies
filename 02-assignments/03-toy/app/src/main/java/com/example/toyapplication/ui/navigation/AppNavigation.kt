@@ -6,6 +6,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.toyapplication.ui.screens.ChildFormScreen
+import com.example.toyapplication.ui.screens.ChildListScreen
 import com.example.toyapplication.ui.screens.HomeScreen
 import com.example.toyapplication.viewmodel.ChildViewModel
 
@@ -13,6 +14,7 @@ import com.example.toyapplication.viewmodel.ChildViewModel
 object Routes {
     const val HOME = "home"
     const val CHILD_FORM = "child_form"
+    const val CHILD_LIST = "child_list"
 }
 
 @Composable
@@ -29,6 +31,9 @@ fun AppNavigation(viewModel: ChildViewModel, modifier: Modifier = Modifier) {
         }
         composable(Routes.CHILD_FORM) {
             ChildFormScreen(navController = navController, viewModel = viewModel)
+        }
+        composable(Routes.CHILD_LIST) {
+            ChildListScreen(navController = navController, viewModel = viewModel)
         }
     }
 }

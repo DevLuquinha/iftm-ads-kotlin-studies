@@ -19,15 +19,17 @@ class ChildViewModel(private val repository: ChildRepository) : ViewModel() {
         }
     }
 
-    fun update(child: Child) {
+    fun update(child: Child, callback: () -> Unit) {
         viewModelScope.launch {
             repository.update(child)
+            callback()
         }
     }
 
-    fun delete(child: Child) {
+    fun delete(child: Child, callback: () -> Unit) {
         viewModelScope.launch {
             repository.delete(child)
+            callback()
         }
     }
 

@@ -21,6 +21,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.toyapplication.ui.navigation.Routes
+import com.example.toyapplication.ui.navigation.SelectedChild
 import com.example.toyapplication.viewmodel.ChildViewModel
 import java.util.Locale
 
@@ -57,10 +58,20 @@ fun HomeScreen(navController: NavController, viewModel: ChildViewModel) {
         }
 
         Button(
-            onClick = { navController.navigate(Routes.CHILD_FORM) },
+            onClick = {
+                SelectedChild.child = null // empty form = register a new child
+                navController.navigate(Routes.CHILD_FORM)
+            },
             modifier = Modifier.fillMaxWidth()
         ) {
             Text(text = "Register child")
+        }
+
+        Button(
+            onClick = { navController.navigate(Routes.CHILD_LIST) },
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text(text = "Children list")
         }
     }
 }
