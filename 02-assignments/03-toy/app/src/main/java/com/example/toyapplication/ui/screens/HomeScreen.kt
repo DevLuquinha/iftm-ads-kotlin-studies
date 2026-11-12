@@ -73,5 +73,12 @@ fun HomeScreen(navController: NavController, viewModel: ChildViewModel) {
         ) {
             Text(text = "Children list")
         }
+
+        Button(
+            onClick = { navController.navigate(Routes.SEARCH) },
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text(text = "Search by CPF")
+        }
     }
 }
