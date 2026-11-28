@@ -12,6 +12,9 @@ local.properties
 *.jks
 *.keystore
 
+# Firebase (repositório público: vai só no .rar de entrega)
+google-services.json
+
 # Arquivos de Entrega (projeto compactado com o APK)
 *.rar
 *.zip
